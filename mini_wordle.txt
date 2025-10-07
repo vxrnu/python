@@ -1,0 +1,48 @@
+#import random
+from random import choice
+
+# begin game
+words = ["apple", "bones", "chirp", "adieu"]
+
+# select random word
+word = random.choice(words)
+
+# game loop start
+tries = 6
+guess = ""
+guesses = 0
+
+# loop until all tries used, or guess is the word
+while (tries > 0) and (guess != word):
+    # ask for latest guess / try. loop until valid
+    guess = ""
+    while len(guess) != 5:
+        guess = input("Enter a 5 letter word guess: ")
+
+    # process guess
+    guesses += 1
+
+    # give feedback, letter by letter
+    for i in range(len(word)):
+        if guess[i] == word[i]:
+            # a) right letter, right place
+            print("Green ", end="")
+        elif guess[i] in word:
+            # b) right letter, somewhere in word
+            print("Yellow", end="")
+        else:
+            # c) letter not in word
+            print("Grey", end="")
+    print("")
+
+    # end game if have guessed the whole word, else try again
+    if guess == word:
+        print("Congratulations: You guessed my word correctly.")
+        break
+    else:
+        print("Hard luck. Keep try.")
+        tries -= 1
+    # game loop end
+
+
+print("Game over")

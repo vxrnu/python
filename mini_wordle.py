@@ -1,4 +1,4 @@
-word = ["apple"]
+word = ["apple", "bones", "chirp", "adieu"]
 guesses = 0
 green = 0 
 orange = 0 
@@ -12,15 +12,17 @@ def mini_wordle():
             print("The word must be 5 letters long")
             break
 
+
     # score guess against word
-    
+    for word in range(len(guess)):
+        if word == guess:
+            print("You won!")
+        elif 
 
-
-
-        else:
-            ()
-        if print(""):
-            print
+        
+            
+            
+        
 
 # main
 
@@ -28,4 +30,4 @@ def mini_wordle():
 
 # loop until user wins or surrenders
 
-mini_wordle(word)
+            mini_wordle(word)
