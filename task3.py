@@ -45,5 +45,41 @@ print(constenants)
 print(space)
 '''
 
-text = input("Enter a line of text")
+#text = input("Enter a line of text")
+text = "abcdef ghijklm nopqrst uvwxyz eee"
 text = text.lower()
+
+vowel = 0
+consonants = 0
+space = 0
+vowels=("a", "e", "i", "o", "u")
+
+letters_dict = {}
+words_dict = {}
+
+for chr in text.lower():
+    if chr in vowels:
+        vowel += 1
+        # if letter in dict, add one to count
+        # else letter not in dict, so add for first time and make count 1.
+        if chr in letters_dict:
+            letters_dict[chr] += 1
+        else:
+            letters_dict[chr] = 1
+
+    elif chr.isalpha(): #alphanumeric
+        consonants += 1
+        if chr in letters_dict:
+            letters_dict[chr] += 1
+        else:
+            letters_dict[chr] = 1   
+
+    for chr.strip().split() in text:
+        if chr in text:
+            words_dict +=1
+        else:
+            words_dict =1
+        
+
+print(letters_dict)
+print(words_dict)
