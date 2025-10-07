@@ -74,11 +74,12 @@ for chr in text.lower():
         else:
             letters_dict[chr] = 1   
 
-    for chr.strip().split() in text:
-        if chr in text:
-            words_dict +=1
+    newchr = text.strip().split()
+    for newchr in text:
+        if newchr in text:
+            words_dict[newchr] +=1
         else:
-            words_dict =1
+            words_dict[newchr] =1
         
 
 print(letters_dict)
