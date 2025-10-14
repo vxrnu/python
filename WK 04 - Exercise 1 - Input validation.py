@@ -10,6 +10,8 @@ along with the relevant functions/methods they offer.
 
 Paul Knighton
 '''
+
+
 # Open a word_list.txt file for reading
 with open("words.txt", "r") as file:
 # Main file reading loop:
@@ -18,7 +20,7 @@ with open("words.txt", "r") as file:
         lines.append(line.strip())
 # read all lines into a list 
 # count the number of lines in a file
-number=len(lines)
+number = len(lines)
 
 # Main processing of list:
 # print all items in the list
@@ -28,31 +30,52 @@ number=len(lines)
 ascending_lines = sorted(lines)
 print(ascending_lines)
 
-# print all items in the list in alphabetic order Z-A (descending), eg sorted and reversed.
+#print all items in the list in alphabetic order Z-A (descending), eg sorted and reversed.
+
 descending_lines = sorted(lines, reverse=True)
 print(descending_lines)
 
-# print the shortest word and its' length
+
+#print the shortest word and its' length
 shortest_word = min(lines, key=len)
 print(f"The shortest word is {shortest_word} with a length of {len(shortest_word)}")
 
+
 # print the longest word and its' length
+
 longest_word = max(lines, key=len)
 print(f"The longest word is {longest_word} and the length of the word is {len(longest_word)}")
 
 
 # print number of items in the list, the first item and the last item of list.
+
 print(lines[0])
 print(lines[number - 1])
 
+
 # print only the unique items in the list, along with the number of times each one occurs in the list
 # print the number of unique items in the list
+
 with open("words.txt", "r") as file:
     lines = file.read().split()
 
 for i in lines:
     if i[0].isupper():
         print(i)
+
+
+with open("words.txt", "r") as file:
+    lines = file.readlines()
+    
+user = input("Pick a letter to start with: ").lower()
+    
+for word in lines:
+    word = word.strip()
+    if word.lower().startswith(user):
+        print(word)
+
+    
+    
 
 # Scrabble / Word finder v1:
 # in a loop ask the user for a start letter,
@@ -66,3 +89,21 @@ for i in lines:
 # Extend your Scrabble / Word finder to print all words beginning with a specific letter, which are a specific number of letters long, which the user inputs.
 # e.g. inputs of "e" and "6" would find.
 # echoes
+
+
+
+
+lines = [line.strip() for line in lines]
+
+game=True
+while game == True:    
+    user = input("Pick a letter to start with: ") 
+    number = int(input("enter the length of the word you want: "))
+    for word in lines:
+        if word[0] == user and len(word) == number:
+            print(word)
+    answer = input("Do you wnat to play again: (y/n) ")
+    if answer.lower() == "n":
+        game = False
+
+    
