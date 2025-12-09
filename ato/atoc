@@ -1,0 +1,33 @@
+import pynput
+
+from pynput.mouse import Button, Controller
+from pynput import mouse
+import time
+import threading
+
+mouse_controller = Controller()
+
+clicking = False
+interval = 1 / 100  # 100 CPS -> 0.01 seconds per click
+
+def click_loop():
+    while True:
+        if clicking:
+            mouse_controller.click(Button.left)
+            time.sleep(interval)
+        else:
+            time.sleep(0.001)
+
+def on_click(x, y, button, pressed):
+    global clicking
+    # Start clicking when left mouse button is held
+    if button == Button.left:
+        clicking = pressed
+
+# Start click thread
+thread = threading.Thread(target=click_loop, daemon=True)
+thread.start()
+
+# Start listener
+with mouse.Listener(on_click=on_click) as listener:
+    listener.join()
